@@ -1,0 +1,125 @@
+<!-- src/main/resources/templates/cv.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Curriculum Vitae</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Menambahkan baris baru jika ruang tidak mencukupi */
+        }
+
+        .contact-info {
+            width: 28%;
+            background-color: #8c8e91;
+            color: #ffffff;
+            border-radius: 7px;
+            padding: 10px;
+            max-width: 270px;
+        }
+
+        .personal-info {
+            width: 70%;
+        }
+
+        .name-info {
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: #01070d;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #6c757d;
+        }
+
+        .education-card, .experience-card {
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Perbaikan pada bagian education dan experience */
+        .education-card,
+        .experience-card {
+            width: 100%; /* Setiap card mengambil 100% lebar */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- Informasi kontak di bagian atas -->
+            <div class="contact-info">
+                <p th:text="'Address: ' + ${profile.address}" class="text-xs"></p>
+                <p th:text="'WhatsApp: ' + ${profile.whatsapp}" class="text-xs"></p>
+                <p th:text="'Email: ' + ${profile.email}" class="text-xs"></p>
+            </div>
+            <!-- Informasi personal di bagian bawah -->
+            <div class="personal-info">
+                <div class="name-info">
+                    <h1 th:text="${profile.fullName}" class="text-4xl font-bold mb-4">Iwan Gunawan Tondang</h1>
+                </div>
+                <p th:text="${'I am ' + profile.age + ' years old and ' + profile.maritalStatus}" class="text-lg mb-4"></p>
+                <p th:text="'I am a fresh graduate from ' + ${profile.university} + ', with a GPA of ' + ${profile.universityGPA} + ' out of a 4.0 scale.'" class="text-lg mb-4"></p>
+                <p th:text="${profile.description}" class="text-lg mb-4"></p>
+            </div>
+        </div>
+        <div class="card">
+            <!-- Pendidikan -->
+            <h2 th:text="'EDUCATION'" class="text-2xl font-bold mb-4"></h2>
+            <div th:each="education : ${profile.educationList}" class="education-card">
+                <h3 th:text="${education.degree + ' in ' + education.school}" class="text-lg font-semibold mb-2"></h3>
+                <p th:if="${education.endDate != null}" th:text="'From ' + ${#temporals.format(education.startDate, 'MMM yyyy')} + ' to ' + ${#temporals.format(education.endDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
+                <p th:if="${education.endDate == null}" th:text="'Since ' + ${#temporals.format(education.startDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
+                <p th:text="'GPA: ' + ${education.gpa}" class="text-md mb-2"></p>
+            </div>
+        </div>
+        <div class="card">
+            <!-- Pengalaman Kerja -->
+            <h2 th:text="'EXPERIENCE'" class="text-2xl font-bold mb-4"></h2>
+            <div th:each="experience : ${profile.experienceList}" class="experience-card">
+                <h3 th:text="${experience.title + ' at ' + experience.company}" class="text-lg font-semibold mb-2"></h3>
+                <p th:if="${experience.endDate != null}" th:text="'From ' + ${#temporals.format(experience.startDate, 'MMM yyyy')} + ' to ' + ${#temporals.format(experience.endDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
+                <p th:if="${experience.endDate == null}" th:text="'Since ' + ${#temporals.format(experience.startDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
+                <p th:text="${experience.description}" class="text-md mb-2"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
