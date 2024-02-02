@@ -31,20 +31,21 @@ public class CVController {
 
         List<Experience> experiences = new ArrayList<>();
         experiences.add(new Experience("Web Developer",
-                "BTPN SYARIAH", LocalDate.of(2023, 5, 1), null,
+                "ACCENTURE", LocalDate.of(2023, 5, 1), null,
                 "Perform and coordinate application programming activities."));
         experiences.add(new Experience("IT And User Support",
-                "ACCENTURE", LocalDate.of(2022, 12, 1), LocalDate.of(2023, 5, 1),
+                "BTPN SYARIAH", LocalDate.of(2022, 12, 1), LocalDate.of(2023, 5, 1),
                 "Analyze and repair devices used by all employees, both in terms of hardware and software."));
         experiences.add(new Experience("Web Developer (Java)",
                 "Freelance", LocalDate.of(2022, 1, 1), LocalDate.of(2022, 12, 31),
                 "Taking Freelance Job (from Group) for build development website app project. Developing the web using spring boot such as ResDOC for API tests, use of auto config, web service, web starter, CLI, JMS, GraphQL, etc."));
 
         List<Education> educations = new ArrayList<>();
-        educations.add(new Education("Computer and Network Engineering", "SMK RISMADUMA SUMBUL",
-                LocalDate.of(2018, 8, 1), LocalDate.of(2021, 5, 1), 0));
+
         educations.add(new Education("Informatics Engineering", "University of Sumatera Utara",
-                LocalDate.of(2014, 9, 1), LocalDate.of(2017, 6, 1), 3.46));
+                LocalDate.of(2018, 8, 1), LocalDate.of(2021, 5, 1), 3.46));
+        educations.add(new Education("Computer and Network Engineering", "SMK RISMADUMA SUMBUL",
+                LocalDate.of(2014, 9, 1), LocalDate.of(2017, 6, 1), 0));
 
         profile.setExperienceList(experiences);
         profile.setEducationList(educations);
