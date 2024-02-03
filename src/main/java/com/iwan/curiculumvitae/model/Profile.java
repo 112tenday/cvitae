@@ -12,7 +12,14 @@ public class Profile {
     private String address;
     private String whatsapp;
     private String email;
+    private String linkedin;
 
+    public String getLinkedin() {
+        return linkedin;
+    }
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
     public String getAddress() {
         return address;
     }

@@ -71,3 +71,35 @@ p {
 .experience-card {
     width: 100%;
 }
+/* profile-image */
+.profile-image {
+    width: 100%;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+/*contact-item */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+/* logo */
+.logo {
+    width: 18px;
+    margin-right: 5px;
+}
+
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.text-xs {
+    font-size: 12px;
+    margin: 0;
+}
+

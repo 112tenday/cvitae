@@ -1,50 +1,111 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <title>Curriculum Vitae</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="card">
-            <!-- Informasi kontak -->
-            <div class="contact-info">
-                <img th:src="@{/images/potocv.jpg}" alt="profile" style="width: 100%; border-radius: 7px; margin-bottom: 10px;" />
-                <p th:text=" ${profile.address}" class="text-xs"></p>
-                <p th:text=" ${profile.whatsapp}" class="text-xs"></p>
-                <p th:text=" ${profile.email}" class="text-xs"></p>
-            </div>
-            <!-- Informasi personal -->
-            <div class="personal-info">
-                <div class="name-info">
-                    <h1 th:text="${profile.fullName}" class="text-4xl font-bold mb-4">Iwan Gunawan Tondang</h1>
-                </div>
-                <p th:text="${'I am ' + profile.age + ' years old and ' + profile.maritalStatus}" class="text-lg mb-4"></p>
-                <p th:text="' Hiii, I am Iwan, I am  graduate from ' + ${profile.university} + ', with a GPA of ' + ${profile.universityGPA} + ' out of a 4.0 scale.'" class="text-lg mb-4"></p>
-                <p th:text="${profile.description}" class="text-lg mb-4"></p>
-            </div>
+      <div class="card">
+                <!-- Informasi kontak -->
+        <div class="contact-info">
+          <img th:src="@{/images/potocv.jpg}" alt="profile" class="profile-image" />
+
+          <div class="contact-item">
+              <img th:src="@{/images/location.png}" alt="Logo" class="logo" />
+              <p class="text-xs" th:text="${profile.address}"></p>
+          </div>
+
+          <div class="contact-item">
+              <a th:href="'https://www.linkedin.com/in/iwangunawantondang/'" target="_blank" class="link">
+                  <img th:src="@{/images/linkedin.png}" alt="Logo" class="logo" />
+                  <p class="text-xs" th:text="${profile.linkedin}"></p>
+              </a>
+          </div>
+
+          <div class="contact-item">
+              <a th:href="'https://wa.me/+6281375761021'" target="_blank" class="link">
+                  <img th:src="@{/images/whatsapp.png}" alt="Logo" class="logo" />
+                  <p class="text-xs" th:text="${profile.whatsapp}"></p>
+              </a>
+          </div>
+
+          <div class="contact-item">
+              <img th:src="@{/images/email.png}" alt="Logo" class="logo" />
+              <p class="text-xs" th:text="${profile.email}"></p>
+          </div>
         </div>
-        <div class="card">
-            <!-- Pendidikan -->
-            <h2 th:text="'EDUCATION'" class="text-2xl font-bold mb-4"></h2>
-            <div th:each="education : ${profile.educationList}" class="education-card">
-                <h3 th:text="${education.degree + ' in ' + education.school}" class="text-lg font-semibold mb-2"></h3>
-                <p th:if="${education.endDate != null}" th:text="'From ' + ${#temporals.format(education.startDate, 'MMM yyyy')} + ' to ' + ${#temporals.format(education.endDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
-                <p th:if="${education.endDate == null}" th:text="'Since ' + ${#temporals.format(education.startDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
-                <p th:text="'GPA: ' + ${education.gpa}" class="text-md mb-2"></p>
-            </div>
+
+        <!-- Informasi personal -->
+        <div class="personal-info">
+          <div class="name-info">
+            <h1 th:text="${profile.fullName}" class="text-4xl font-bold mb-4">
+              Iwan Gunawan Tondang
+            </h1>
+          </div>
+          <p
+            th:text="${ 'Hiii, I am Iwan, I am ' + profile.age + ' years old and ' + profile.maritalStatus}"
+            class="text-lg mb-4"
+          ></p>
+          <p
+            th:text="' I am  graduate from ' + ${profile.university} + ', with a GPA of ' + ${profile.universityGPA} + ' out of a 4.0 scale.'"
+            class="text-lg mb-4"
+          ></p>
+          <p th:text="${profile.description}" class="text-lg mb-4"></p>
         </div>
-        <div class="card">
-            <!-- experience -->
-            <h2 th:text="'EXPERIENCE'" class="text-2xl font-bold mb-4"></h2>
-            <div th:each="experience : ${profile.experienceList}" class="experience-card">
-                <h3 th:text="${experience.title + ' at ' + experience.company}" class="text-lg font-semibold mb-2"></h3>
-                <p th:if="${experience.endDate != null}" th:text="'From ' + ${#temporals.format(experience.startDate, 'MMM yyyy')} + ' to ' + ${#temporals.format(experience.endDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
-                <p th:if="${experience.endDate == null}" th:text="'Since ' + ${#temporals.format(experience.startDate, 'MMM yyyy')}" class="text-sm text-gray-500 mb-2"></p>
-                <p th:text="${experience.description}" class="text-md mb-2"></p>
-            </div>
+      </div>
+      <div class="card">
+        <!-- Pendidikan -->
+        <h2 th:text="'EDUCATION'" class="text-2xl font-bold mb-4"></h2>
+        <div
+          th:each="education : ${profile.educationList}"
+          class="education-card"
+        >
+          <h3
+            th:text="${education.degree + ' in ' + education.school}"
+            class="text-lg font-semibold mb-2"
+          ></h3>
+          <p
+            th:if="${education.endDate != null}"
+            th:text="'From ' + ${#temporals.format(education.startDate, 'MMM yyyy')} + ' to ' + ${#temporals.format(education.endDate, 'MMM yyyy')}"
+            class="text-sm text-gray-500 mb-2"
+          ></p>
+          <p
+            th:if="${education.endDate == null}"
+            th:text="'Since ' + ${#temporals.format(education.startDate, 'MMM yyyy')}"
+            class="text-sm text-gray-500 mb-2"
+          ></p>
+          <p th:text="'GPA: ' + ${education.gpa}" class="text-md mb-2"></p>
         </div>
+      </div>
+      <div class="card">
+        <!-- experience -->
+        <h2 th:text="'EXPERIENCE'" class="text-2xl font-bold mb-4"></h2>
+        <div
+          th:each="experience : ${profile.experienceList}"
+          class="experience-card"
+        >
+          <h3
+            th:text="${experience.title + ' at ' + experience.company}"
+            class="text-lg font-semibold mb-2"
+          ></h3>
+          <p
+            th:if="${experience.endDate != null}"
+            th:text="'From ' + ${#temporals.format(experience.startDate, 'MMM yyyy')} + ' to ' + ${#temporals.format(experience.endDate, 'MMM yyyy')}"
+            class="text-sm text-gray-500 mb-2"
+          ></p>
+          <p
+            th:if="${experience.endDate == null}"
+            th:text="'Since ' + ${#temporals.format(experience.startDate, 'MMM yyyy')}"
+            class="text-sm text-gray-500 mb-2"
+          ></p>
+          <p th:text="${experience.description}" class="text-md mb-2"></p>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

@@ -23,11 +23,15 @@ public class CVController {
         profile.setMaritalStatus("Single");
         profile.setUniversity("University of Sumatera Utara");
         profile.setUniversityGPA(3.46);
-        profile.setDescription("I am a hard worker, have a passion for working independently and in a team. " +
-                "I am very excited about new things and have innovative thoughts.");
+        profile.setDescription("I have a high enthusiasm for working and contributing to"+
+                                " innovative projects in the field of technology and information," +
+                                " having good analytical skills and being able to solve problems logically,"+
+                                " I have a passion for learning the latest technology and always want to improve my skills."+
+                                " Detail oriented and highly committed to producing quality work");
         profile.setAddress("Jakarta Selatan, Indonesia");
         profile.setWhatsapp("0813 7576 1021");
         profile.setEmail("iwangunawantondang@gmail.com");
+        profile.setLinkedin("iwantondang");
 
         List<Experience> experiences = new ArrayList<>();
         experiences.add(new Experience("Web Developer",
@@ -54,4 +58,9 @@ public class CVController {
 
         return "cv";
     }
+    @GetMapping("/ht2")
+public String showHT2() {
+  return "ht2";
+}
+
 }
