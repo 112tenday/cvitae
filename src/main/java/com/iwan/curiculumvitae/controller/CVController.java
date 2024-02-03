@@ -32,7 +32,7 @@ public class CVController {
         List<Experience> experiences = new ArrayList<>();
         experiences.add(new Experience("Web Developer",
                 "ACCENTURE", LocalDate.of(2023, 5, 1), null,
-                "Perform and coordinate application programming activities."));
+                "Perform and coordinate application programming activities,Develop specifications and code to ensure the successful implementation, development and maintenance of the website, Collaborate with architects, designers, business systems analysts, and testing specialists in building website Applications, and Working and collaborating within multidisciplinary and international agile teams and partners."));
         experiences.add(new Experience("IT And User Support",
                 "BTPN SYARIAH", LocalDate.of(2022, 12, 1), LocalDate.of(2023, 5, 1),
                 "Analyze and repair devices used by all employees, both in terms of hardware and software."));
